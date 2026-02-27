@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:weather_app/core/config/app_config.dart';
+import 'package:weather_app/di/service_locator.dart';
 import 'package:weather_app/my_app.dart';
 
 void main() {
@@ -18,8 +19,10 @@ void main() {
       apiBaseUrl: 'test_url',
       appTitle: 'Test App',
     );
+    setupServiceLocator(config);
+
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(config: config));
+    await tester.pumpWidget(const MyApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

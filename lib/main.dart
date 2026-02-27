@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/core/config/app_config.dart';
+import 'package:weather_app/di/service_locator.dart';
 import 'package:weather_app/my_app.dart';
 
 void main({AppConfig? config}) {
-  // If config is not provided (when running main.dart directly),
-  // use production configuration by default.
   final appConfig =
       config ??
       AppConfig(
@@ -13,5 +12,7 @@ void main({AppConfig? config}) {
         appTitle: 'Weather App',
       );
 
-  runApp(MyApp(config: appConfig));
+  setupServiceLocator(appConfig);
+
+  runApp(const MyApp());
 }
